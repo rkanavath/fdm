@@ -155,8 +155,11 @@ deliver_maildir_deliver(struct deliver_ctx *dctx, struct actitem *ti)
 		log_warnx("%s: empty path", a->name);
 		goto error;
 	}
-	log_debug2("%s: saving to maildir %s", a->name, path);
-
+	#if 0
+	log_debug("%s: saving to maildir %s", a->name, path);
+	#else
+	log_debug("%s: saving message to %s", a->name, path);
+	#endif
 	/* Create the maildir. */
 	if (deliver_maildir_create(a, path) != 0)
 		goto error;

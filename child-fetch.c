@@ -695,7 +695,7 @@ fetch_enqueue(struct account *a, struct io *pio, struct mail *m)
 	*total = '\0';
 	if (a->fetch->total != NULL && a->fetch->total(a) != 0)
 		xsnprintf(total, sizeof total, " of %u", a->fetch->total(a));
-	log_debug("%s: got message %u%s: size %zu, body %zu", a->name, m->idx,
+	log_debug2("%s: got message %u%s: size %zu, body %zu", a->name, m->idx,
 	    total, m->size, m->body);
 	return (0);
 }
@@ -716,7 +716,7 @@ fetch_dequeue(struct account *a, struct mail_ctx *mctx)
 		break;
 	case DECISION_KEEP:
 		fetch_kept++;
-		log_debug("%s: keeping message %u", a->name, m->idx);
+		log_debug2("%s: keeping message %u", a->name, m->idx);
 		break;
 	default:
 		fatalx("invalid decision");

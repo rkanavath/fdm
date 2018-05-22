@@ -305,7 +305,7 @@ mail_deliver(struct mail_ctx *mctx, struct msg *msg, struct msgbuf *msgbuf)
 done:
 	/* Remove completed action from queue. */
 	TAILQ_REMOVE(&mctx->dqueue, dctx, entry);
-	log_debug("%s: message %u delivered (rule %u, %s) in %.3f seconds",
+	log_debug2("%s: message %u delivered (rule %u, %s) in %.3f seconds",
 	    a->name, m->idx, dctx->rule->idx,
 	    dctx->actitem->deliver->name, get_time() - dctx->tim);
 	user_free(dctx->udata);
